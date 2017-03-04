@@ -20,7 +20,7 @@ module.exports = {
         cachePath: rootPath + '/cache',
         viewEngine: 'jade',
         enableCache: false,
-        dbConnStr: "postgres://PG_USER:PG_PWD@127.0.0.1/PG_DB",
+        dbConnStr: process.env.PGSQL_URL || "postgres://PG_USER:PG_PWD@127.0.0.1/PG_DB",
     },
 
     test: {
