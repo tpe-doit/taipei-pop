@@ -70,6 +70,8 @@ body {
 }
 
 #home h10 {
+	font-weight: bold;
+    font-size: 60px;
     color: #000000;
 }
 
