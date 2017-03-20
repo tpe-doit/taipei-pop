@@ -119,13 +119,9 @@ body {
 
 #carousel-home .carousel-caption {
     background: rgba(0, 0, 0, 0.2);
+	color: #000000;
 }
 
-#carousel-home .carousel-caption-black {
-    background: rgb(0, 0, 0, 0.2);
-	color: #000000;
-	
-}
 
 .nav-justified > li > a {
     border-radius: 0px;
