@@ -1,11 +1,11 @@
-'use strict';
+﻿'use strict';
 
 var path = require('path');
 var rootPath = path.normalize(__dirname + '/..');
 
 
 module.exports = {
-    appName: '天龍特公地',
+    appName: '市有閒置空間整合查詢平台',
 
     development: {
         port: process.env.PORT || '8089',
