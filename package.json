@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "taipei-pop",
   "version": "0.0.1",
   "description": "天龍特公地",
@@ -21,6 +21,6 @@
     "googleapis": "~1.0.5",
     "ds-cache": "0.0.4",
     "request": "^2.40.0",
-    "pg": "^3.5.0"
+    "pg": "^6.4.0"
   }
 }
