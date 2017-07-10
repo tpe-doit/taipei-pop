@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
 
     var taipei = {
     "中正區": {
@@ -89,7 +89,7 @@
         });
 
         var JsonUrl = getAPIUrl(query);
-
+console.log(JsonUrl);
         $.getJSON(JsonUrl, function(GeoJSON){
             if (! $.isEmptyObject(GeoJSON)){
                 var features = GeoJSON.features;
