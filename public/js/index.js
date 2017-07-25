@@ -165,13 +165,13 @@ console.log(JsonUrl);
         });
 
         map.data.addListener("click", function(event) {
-            var properties = ["面積", "路段", "地號", "管理者", "使用分區"];
+            var properties = ["面積", "路段", "地號", "管理者", "都市計畫使用"];
 
             var area = event.feature.getProperty('面積');
             var road = event.feature.getProperty('路段');
             var land = event.feature.getProperty('地號');
             var unit = event.feature.getProperty('管理者');
-            var category = event.feature.getProperty('使用分區');
+            var category = event.feature.getProperty('都市計畫使用');
 
             //for urban-renew information
             var id = $.trim(event.feature.getProperty('id'));
@@ -180,7 +180,7 @@ console.log(JsonUrl);
             var upload_image = $.trim(event.feature.getProperty('upload_image'));
 
             var renew_tpl = '';
-            var image_url = 'images/tplogo.png';
+            var image_url = 'images/tplogo.jpg';
 
             if (status !== '') {
                 var renew_compiled = _.template($('#renew-tpl').text());
