@@ -180,7 +180,7 @@ console.log(JsonUrl);
             var upload_image = $.trim(event.feature.getProperty('upload_image'));
 
             var renew_tpl = '';
-            var image_url = 'images/logo.png';
+            var image_url = 'images/tplogo.png';
 
             if (status !== '') {
                 var renew_compiled = _.template($('#renew-tpl').text());

@@ -101,7 +101,7 @@ var _sendJson = function(conditions, req, res){
             var GeoJsonList = rows.reduce(function(a,b){
                 var geojson = b.geo_json;
         
-                geojson.properties['都更狀態'] = b.renew_status;
+                geojson.properties['地上物及使用現況'] = b.renew_status;
                 geojson.properties.caseurl = b.renew_detail;
                 geojson.properties.id = b.id;
                 geojson.properties.upload_image = b.upload_image;
