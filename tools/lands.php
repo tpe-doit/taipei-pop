@@ -62,27 +62,52 @@ while($line = fgetcsv($fh, 2048)) {
     print_r($line);
     exit();
   }
-  $jsonText = addslashes(json_encode($lands[$section][$line['地號']]));
-  $detail = '';
   foreach($line AS $k => $v) {
-    $detail .= "[{$k}]{$v}\n";
+      $lands[$section][$line['地號']]['properties'][$k] = $v;
   }
-  $detail = addslashes($detail);
-  $valueLines[] = "('{$line['鄉鎮市區']}區', '{$section}', '{$line['地號']}', '{$line['地號']}', '{$section}', '{$line['地號']}', '{$line['面積(m2)']}', '臺北市政府{$line['機關別']}', '1', NULL, '{$jsonText}', '', '{$detail}', '')";
+  $jsonText = (json_encode($lands[$section][$line['地號']]));
+  $area = floatval(str_replace(',', '', trim($line['面積(m2)'])));
+  $valueLines[] = "('{$line['鄉鎮市區']}區', '{$section}', '{$line['地號']}', '{$line['地號']}', '{$section}', '{$line['地號']}', '{$area}', '臺北市政府{$line['機關別']}', '1', NULL, '{$jsonText}'::json, '', '', '')";
 }
 
+// 建物資料
+$fp = fopen("tpe_pub_building.csv", "r");
+$columns = array_map(function($s){ return preg_replace("/\s+/u", "", $s); }, fgetcsv($fp));
+while ($rows = fgetcsv($fp)) {
+    $values = array_combine($columns, $rows);
+    $area = floatval($values['閒置面積㎡']);
+    $skip_columns = array(
+        '取得價格', '閒置原因代碼', '地號', '所有權人', '管理機關', '處理方式代碼', '聯絡單位/聯絡人', '用途代碼',
+        'Address', 'Response_Address', 'Response_X', 'Response_Y'
+    );
+    $jsonText = json_encode(array(
+        'type' => 'Feature',
+        'properties' => array_filter($values, function($k) use ($skip_columns) {
+            return !in_array($k, $skip_columns);
+        }, ARRAY_FILTER_USE_KEY),
+        'geometry' => array(
+            'type' => 'Point',
+            'coordinates' => array_map('floatval', array($values['Response_X'], $values['Response_Y'])),
+        ),
+    ));
+    $valueLines[] = "('{$values['行政區']}', '', '', '', '', '', {$area}, '臺北市政府{$values['機關別']}', '1', NULL, '{$jsonText}'::json, '', '', '')";
+}
+
+// 建物座落
 $geo = json_decode(file_get_contents(__DIR__ . '/建物座落.json'), true);
 
 foreach($geo['features'] AS $f) {
   $section = $codes[$f['properties']['SECTCODE']];
-  $jsonText = addslashes(json_encode($f));
-  $valueLines[] = "('', '{$section}', '{$f['properties']['LANDCODE']}', '{$f['properties']['LANDCODE']}', '{$section}', '{$f['properties']['LANDCODE']}', '{$f['properties']['CALAREA']}', '臺北市政府', '1', NULL, '{$jsonText}', '', '', '')";
+  $jsonText = (json_encode($f));
+  $area = floatval($f['properties']['CALAREA']);
+//  $valueLines[] = "('', '{$section}', '{$f['properties']['LANDCODE']}', '{$f['properties']['LANDCODE']}', '{$section}', '{$f['properties']['LANDCODE']}', '{$area}', '臺北市政府', '1', NULL, '{$jsonText}', '', '', '')";
 }
 
+// 建物輪廓
 $geo = json_decode(file_get_contents(__DIR__ . '/建物輪廓.json'), true);
 foreach($geo['features'] AS $f) {
-  $jsonText = addslashes(json_encode($f));
-  $valueLines[] = "('', '', '', '', '', '', '', '臺北市政府', '1', NULL, '{$jsonText}', '', '', '')";
+  $jsonText = (json_encode($f));
+//  $valueLines[] = "('', '', '', '', '', '', '', '臺北市政府', '1', NULL, '{$jsonText}', '', '', '')";
 }
 
-file_put_contents(__DIR__ . '/import.sql', "INSERT INTO taipei_pop (block, road, road_no, land_no, ser_no01, ser_no02, area, unit, id, locations, geo_json, renew_status, renew_detail, upload_image) VALUES\n" . implode(",\n", $valueLines));
+file_put_contents(__DIR__ . '/import.sql', "TRUNCATE TABLE taipei_pop; INSERT INTO taipei_pop (block, road, road_no, land_no, ser_no01, ser_no02, area, unit, id, locations, geo_json, renew_status, renew_detail, upload_image) VALUES\n" . implode(",\n", $valueLines));
