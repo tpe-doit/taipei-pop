@@ -22,14 +22,7 @@ script(type="text/template", id="content-tpl")
     | <div class="col-md-6">
     | <form id='upload_form' action='" + BACKEND_URL + "/image/upload' method='post' enctype='multipart/form-data'>
     | <table class="table table-striped">
-    | <tr><td>路段</td><td><%=road%></td></tr>
-    | <tr><td>地號</td><td><%=land%></td></tr>
-    | <tr><td>面積</td><td><%=area%> 平方公尺</td></tr>
-    | <tr><td>都更狀態</td><td><%=renew_tpl%></td></tr>
-    | <tr><td>管理者</td><td><%=unit%></td></tr>
-    | <tr><td>使用分區</td><td><%=category%></td></tr>
-    | <tr><td>提供圖片</td>
-    |<td>
+    | <%= table_list %>
     | <input type="file" name="image" accept="image/*" capture="camera" />  
     |</td></tr>
     | </table>

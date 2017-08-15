@@ -192,8 +192,24 @@ console.log(JsonUrl);
             }
 
             var content_compiled = _.template($('#content-tpl').text());
+            var table_list = [];
+            var table_dom = $('<table></table>');
+            var skip_list = ['caseurl', 'id', 'upload_image', 'SECLANDID', 'LANDID', 'SECTCODE', 'SECTION1', 'LANDCODE', 'TYPE', 'AREA', 'CALAREA', 'Shape_Leng', 'Shape_Area', '代碼'];
+
+            event.feature.forEachProperty(function(value, p){
+                if (skip_list.indexOf(p) >= 0) {
+                    return;
+                }
+                
+                var tr_dom = $('<tr></tr>');
+                tr_dom.append($('<td></td>').text(p));
+                tr_dom.append($('<td></td>').text(value));
+                table_dom.append(tr_dom);
+            });
+
             var content = content_compiled({
                 id: id,
+                table_list: table_dom.html(),
                 road: road,
                 land: land,
                 area: area,
