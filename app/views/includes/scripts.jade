@@ -20,18 +20,11 @@ script(type="text/template", id="content-tpl")
     | <div class="modal-body"><div class="row">
     | <div class="col-md-6"><img src="<%=image_url%>" width="100%" /></div>
     | <div class="col-md-6">
-    | <form id='upload_form' action='" + BACKEND_URL + "/image/upload' method='post' enctype='multipart/form-data'>
     | <table class="table table-striped">
     | <%= table_list %>
-    | <input type="file" name="image" accept="image/*" capture="camera" />  
     |</td></tr>
     | </table>
-    | <button type="submit" class="btn btn-primary btn-lg" id="img_upload">上傳</button>
-    | <input type="hidden" name="id" value="<%=id%>" />
-    | </form> 
     | </div>
     | <div class="modal-footer">
-    | <a href="<%=backedn_url%>/api/download/<%=id%>"><span class="glyphicon glyphicon-download-alt">下載GeoJson</span></a></div>
-    | <img src="<%=backedn_url%>/image/exposure?id=<%=id%>" width="0px"/>
     | </div>
     | </div></div></div>
