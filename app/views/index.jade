@@ -5,8 +5,8 @@ block content
     .overlay
       .container
         .col-md-8.col-md-offset-2.text-center
-          h1 
-            | 市有閒置空間整合查詢平台
+          h1(style="font-size: 48px;") 
+            | 臺北市市有閒置空間整合查詢平台
         .row
           .col-md-8.col-md-offset-2.text-center
             #carousel-home.carousel.slide(data-ride="carousel")
@@ -81,9 +81,10 @@ block content
             | 查詢空間
           .row
             .col-md-4.col-sm-4
+            .col-md-4.col-sm-4
               .dropdown.choice-block
                 button.btn.btn-default.btn-lg.btn-block.dropdown-toggle(type="button", id="choice-block", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-                  | 行政區
+                  | 依行政區
                   span.caret
                 ul.dropdown-menu(role='menu',  aria-labelledby="choice-block")
                   li(role="presentation")
@@ -125,46 +126,13 @@ block content
                   li(role="presentation")
                     a(data-value='文山區')
                       | 文山區
-            .col-md-4.col-sm-4
-              .dropdown.choice-area
-                button.btn.btn-default.btn-lg.btn-block.dropdown-toggle(type="button", id="choice-area", data-toggle="dropdown",aria-haspopup="true", aria-expanded="false")
-                  | 面積
-                  span.caret
-                ul.dropdown-menu(role='menu',  aria-labelledby="choice-area")
-                  li(role="presentation")
-                    a(data-value='')
-                      | 全部  
-                  li(role="presentation")        
-                    a(data-value=">=500")
-                      | 500坪(1650平方公尺)以上
-                  li(role="presentation")
-                    a(data-value=">20 AND <500")
-                      | 20坪 ~ 500坪
-                  li(role="presentation")
-                    a(data-value="<=20")
-                      | 20坪以下
-            .col-md-4.col-sm-4
-              .dropdown.choice-unit
-                button.btn.btn-default.btn-lg.btn-block.dropdown-toggle(type="button", id="choice-unit", data-toggle="dropdown",aria-haspopup="true", aria-expanded="true")
-                  | 經營單位
-                  span.caret
-                ul.dropdown-menu(role='menu',  aria-labelledby="choice-unit")
-                  li
-                    a.item(data-value='')
-                      | 全部
-                  li(role="presentation")
-                    a.item(data-value="(臺|台)北市%")
-                      | 臺北市      
-                  li(role="presentation")
-                    a.item(data-value="%學%")
-                      | 學校單位  
           p.data-info.text-center
             a(data-toggle="collapse", href="#collapse-data-info", aria-expanded="false", aria-controls="collapse-data-info")
               span.glyphicon.glyphicon-info-sign
               | 更多資料特性說明
           #collapse-data-info.collapse(aria-expanded="false")
             .well
-                | 1. 臺北市有土地。<br/>2. 閒置土地。<br/>3. 土地面積單位為平方公尺。
+                | 1. 臺北市市有土地及建物。<br/>2. 閒置(低度利用)土地及建物。<br/>3. 土地面積單位為平方公尺。
       //.ui.input.focus.input-address
         //input#input-address(placeholder="地址..." type="text")
     h3

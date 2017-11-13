@@ -1,6 +1,8 @@
 cache/ds.json
 upload/*
 node_modules/*
+public/images/area/*
+public/images/building/*
 *.DS_Store
 <<<<<<< HEAD
 .gitignore
