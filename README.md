@@ -22,6 +22,12 @@ $ npm i
 $ npm start
 ```
 
+TODO : Explain how to create a new API.
+
+## Heroku
+
+TODO : explain how to publish.
+
 ## 資料清理工具 by Java
 
 ### Dependency 
@@ -34,12 +40,6 @@ $ npm start
 `checkTaipei_pop.java` ： 檢查整理好的 `土地.csv`、`建物.csv` 檔與現行資料庫的對應是否一對一。
 `landLink.java` ： 將 `土地.csv` 配合資料庫對應的 gis 資訊，組合好後寫進新的 table。
 `buildingLink.java` ： 將 `建物.csv` 配合資料庫對應的 gis 資訊，組合好後寫進新的 table。
-
-TODO : Explain how to create a new API.
-
-## Heroku
-
-TODO : explain how to publish.
 
 ## 授權條款
 
