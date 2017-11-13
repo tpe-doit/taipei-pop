@@ -37,9 +37,9 @@ TODO : explain how to publish.
 4.  `org.postgresql.util` ： 與 Postgresql 連結，以及包裝 Postgresql 所認可的 JSON 型態資料。
 
 ### 程式功能說明
-`checkTaipei_pop.java` ： 檢查整理好的 `土地.csv`、`建物.csv` 檔與現行資料庫的對應是否一對一。
-`landLink.java` ： 將 `土地.csv` 配合資料庫對應的 gis 資訊，組合好後寫進新的 table。
-`buildingLink.java` ： 將 `建物.csv` 配合資料庫對應的 gis 資訊，組合好後寫進新的 table。
+1.  `checkTaipei_pop.java` ： 檢查整理好的 `土地.csv`、`建物.csv` 檔與現行資料庫的對應是否一對一。
+2.  `landLink.java` ： 將 `土地.csv` 配合資料庫對應的 gis 資訊，組合好後寫進新的 table。
+3.  `buildingLink.java` ： 將 `建物.csv` 配合資料庫對應的 gis 資訊，組合好後寫進新的 table。
 
 ## 授權條款
 
