@@ -54,7 +54,7 @@
     var BACKEND_URL = '';
     var API = BACKEND_URL + "/api/search";
 
-    var FIELDS = ['Block','Area','Unit','Address'];
+    var FIELDS = ['Block','Area','Unit','Address','AllBlock','block1','block2','block3','block4','block5','block6','block7','block8','block9','block10','block11','block12'];
 
     var getAPIUrl = function(query){
 
@@ -194,12 +194,21 @@ console.log(JsonUrl);
             var content_compiled = _.template($('#content-tpl').text());
             var table_list = [];
             var table_dom = $('<table></table>');
-            var skip_list = ['caseurl', 'id', 'upload_image', 'SECLANDID', 'LANDID', 'SECTCODE', 'SECTION1', 'LANDCODE', 'TYPE', 'AREA', 'CALAREA', 'Shape_Leng', 'Shape_Area', '代碼'];
+            var skip_list = ['Pic_File_Name','caseurl', 'id', 'upload_image', 'SECLANDID', 'LANDID', 'SECTCODE', 'SECTION1', 'LANDCODE', 'TYPE', 'AREA', 'CALAREA', 'Shape_Leng', 'Shape_Area', '代碼'];
 
             event.feature.forEachProperty(function(value, p){
+                if('Pic_File_Name'.indexOf(p) >= 0){
+                    var pic_Info = value.split("-");
+                    if(pic_Info[0]=="A")
+                        image_url = 'images/area/'+pic_Info[1]+'.jpg';
+                    else if(pic_Info[0]=="B")
+                        image_url = 'images/building/'+pic_Info[1]+'.jpg';
+                }
+                
                 if (skip_list.indexOf(p) >= 0) {
                     return;
                 }
+                
                 
                 var tr_dom = $('<tr></tr>');
                 tr_dom.append($('<td></td>').text(p));

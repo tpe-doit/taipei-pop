@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "taipei-pop",
   "version": "0.0.1",
   "description": "天龍特公地",
@@ -13,14 +13,14 @@
     "url": "git://github.com/dz1984/taipei-pop.git"
   },
   "dependencies": {
-    "express": "3.3.8",
-    "jade": "*",
-    "gulp": "~3.8.5",
-    "gulp-nodemon": "~1.0.4",
-    "gulp-jshint": "^1.7.1",
-    "googleapis": "~1.0.5",
     "ds-cache": "0.0.4",
-    "request": "^2.40.0",
-    "pg": "^6.4.0"
+    "express": "^3.3.8",
+    "googleapis": "^1.0.23",
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.12.0",
+    "gulp-nodemon": "^1.0.5",
+    "jade": "^1.11.0",
+    "pg": "^6.4.2",
+    "request": "^2.83.0"
   }
 }

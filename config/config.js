@@ -5,7 +5,7 @@ var rootPath = path.normalize(__dirname + '/..');
 
 
 module.exports = {
-    appName: '市有閒置空間整合查詢平台',
+    appName: '臺北市市有閒置空間整合查詢平台',
 
     development: {
         port: process.env.PORT || '8089',
@@ -20,7 +20,7 @@ module.exports = {
         cachePath: rootPath + '/cache',
         viewEngine: 'jade',
         enableCache: false,
-        dbConnStr: process.env.PGSQL_URL || "postgres://PG_USER:PG_PWD@127.0.0.1/PG_DB",
+        dbConnStr: process.env.PGSQL_URL || "postgres://PG_USER:PG_PWD@127.0.0.1/pg_db",
     },
 
     test: {

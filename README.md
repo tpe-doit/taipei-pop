@@ -28,6 +28,19 @@ TODO : Explain how to create a new API.
 
 TODO : explain how to publish.
 
+## 資料清理工具 by Java
+
+### Dependency 
+1.  `org.apache.commons.lang3` ： 將字串轉換成 unicode 。
+2.  `com.opencsv` ： 讀取 csv 檔，支援 RFC 4180。(非常好用的工具，大推)
+3.  `com.google.gson` ： 處理 JSON 格式的資料。
+4.  `org.postgresql.util` ： 與 Postgresql 連結，以及包裝 Postgresql 所認可的 JSON 型態資料。
+
+### 程式功能說明
+1.  `checkTaipei_pop.java` ： 檢查整理好的 `土地.csv`、`建物.csv` 檔與現行資料庫的對應是否一對一。
+2.  `landLink.java` ： 將 `土地.csv` 配合資料庫對應的 gis 資訊，組合好後寫進新的 table。
+3.  `buildingLink.java` ： 將 `建物.csv` 配合資料庫對應的 gis 資訊，組合好後寫進新的 table。
+
 ## 授權條款
 
 The MIT license(MIT)
